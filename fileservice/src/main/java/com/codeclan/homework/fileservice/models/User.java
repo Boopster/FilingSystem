@@ -11,4 +11,19 @@ public class User {
         this.name = name;
         this.files = new ArrayList<File>();
     }
+
+    public User() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void addFile(File file) {
+        this.files.add(file);
+    }
 }
