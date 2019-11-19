@@ -10,6 +10,10 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "name")
     private String name;
 
@@ -23,6 +27,18 @@ public class User {
     }
 
     public User() {
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFolders(List<Folder> folders) {
+        this.folders = folders;
     }
 
     public String getName() {

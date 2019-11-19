@@ -1,7 +1,6 @@
 package com.codeclan.homework.fileservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class Folder {
     private List<File> files;
 
     @JsonIgnoreProperties("folders")
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -33,6 +33,14 @@ public class Folder {
     }
 
     public Folder() {
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
