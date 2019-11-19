@@ -1,17 +1,35 @@
 package com.codeclan.homework.fileservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "folders")
 public class Folder {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @JsonIgnoreProperties("folder")
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
+
+    @JsonIgnoreProperties("folders")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Folder(String title, User user) {
         this.title = title;
-        this.files = new ArrayList<File>();
         this.user = user;
+        this.files = new ArrayList<File>();
     }
 
     public Folder() {
@@ -31,6 +49,14 @@ public class Folder {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<File> getFiles() {
+        return this.files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 
     public void addFile(File file) {
