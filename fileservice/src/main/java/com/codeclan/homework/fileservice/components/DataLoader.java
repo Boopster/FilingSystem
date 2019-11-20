@@ -39,11 +39,8 @@ import org.springframework.stereotype.Component;
             fileRepository.save(file2);
             folder1.addFile(file1);
             folder2.addFile(file2);
-//            pirateRepository.save(jack);
-//            raid2.addPirate(john);
-//            raidRepository.save(raid2);
-            userRepository.save(user1);
-            userRepository.save(user2);
+            folderRepository.save(folder1);
+            folderRepository.save(folder2);
         }
     }
 
